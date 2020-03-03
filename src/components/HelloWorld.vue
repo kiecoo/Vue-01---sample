@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid mt-5">
+    <h1> List of {{pageTitle}}</h1>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -29,6 +30,12 @@ export default {
   data () {
     return {
       listData: []
+    }
+  },
+  props: {
+    pageTitle: {
+      type: String,
+      default: ''
     }
   },
   mounted () {
