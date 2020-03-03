@@ -15,7 +15,11 @@
         <tr v-for="(item , i ) in listData" :key="i">
           <th scope="row">{{i+1}}</th>
           <td><img :src="item.picture.medium" alt=""></td>
-          <td>{{item.name.first}}</td>
+          <td >
+            <span @click="nameClicked(item.name.first)">{{item.name.first}}</span>
+            <!--       wrong
+             <span @click="nameClicked()">{{item.name.first}}</span> -->
+          </td>
           <td>{{item.email}}</td>
           <td> <button class="btn btn-outline-primary" @click="clickMe(item)">click</button> </td>
         </tr>
@@ -52,6 +56,10 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+    },
+    nameClicked (person) {
+      this.$emit('sayHi', person)
+      console.log(`${person}`)
     }
   }
 }

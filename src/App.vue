@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">{{nameOnNav}}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,7 +36,7 @@
         </select>
       </div>
     </nav>
-    <router-view :pageTitle="pageSelected"/>
+    <router-view :pageTitle="pageSelected" @sayHi="sayHiOnNav"/>
   </div>
 </template>
 
@@ -45,7 +45,13 @@ export default {
   name: 'App',
   data () {
     return {
-      pageSelected: 'teacher'
+      pageSelected: 'teacher',
+      nameOnNav: ''
+    }
+  },
+  methods: {
+    sayHiOnNav (user) {
+      this.nameOnNav = user
     }
   }
 }
