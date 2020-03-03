@@ -54,6 +54,10 @@ export default {
         .then(function (response) {
           console.log(response)
           vm.listData = response.data.results
+          vm.listData.forEach(element => {
+            vm.$set(element, 'selected', false)
+            // WRONG:  this.$set(.....) 需用vm代替this
+          })
         })
         .catch(function (error) {
           console.log(error)
