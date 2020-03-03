@@ -12,7 +12,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item , i ) in listData" :key="i">
+        <tr v-for="(item , i ) in listData" :key="i" :class="{'bg-info':item.selected}">
+          <!-- ERR: clickMe(item)後bg-info無法成功顯示 在 selected為ture的item ,
+                    因 新屬性selected  尚未＄set -->
           <th scope="row">{{i+1}}</th>
           <td><img :src="item.picture.medium" alt=""></td>
           <td >
@@ -60,6 +62,10 @@ export default {
     nameClicked (person) {
       this.$emit('sayHi', person)
       console.log(`${person}`)
+    },
+    clickMe (item) {
+      item.selected = !item.selected
+      console.log(item.selected)
     }
   }
 }
